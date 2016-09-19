@@ -20,13 +20,14 @@ if [ $? == 0 ]
                 # Update the azure's repository.
                 echo "Connecting to server for git push..."
                 git push azurewebservice master
+                exit 0
             else 
                 echo "No changes to be pushed to server. Terminating."
-                exit
+                exit 1
         fi
         exit
     else 
         # There must have been an issue in the execution.
         echo "There were errors in building process, fix them and re-try."
-        exit
+        exit 1
 fi
