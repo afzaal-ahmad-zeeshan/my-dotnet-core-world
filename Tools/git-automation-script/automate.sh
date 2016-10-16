@@ -1,3 +1,9 @@
+if [ $# == 0 ] 
+    then 
+        echo "Usage: automate.sh <git-remote-repository>"
+        exit 1
+fi
+
 # Variables
 commit_message="Deployment commit on $(date "+%B %dth, %Y at %H:%M %p")."
 
@@ -19,7 +25,7 @@ if [ $? == 0 ]
                 # Files need to be updated
                 # Update the azure's repository.
                 echo "Connecting to server for git push..."
-                git push azurewebservice master
+                git push $1 master
                 exit 0
             else 
                 echo "No changes to be pushed to server. Terminating."
